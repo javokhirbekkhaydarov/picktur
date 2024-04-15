@@ -1,5 +1,7 @@
-<template><p>{{ $t('hello') }}</p></template>
-
-<script></script>
+<template>
+  <div class="home">
+    <HeaderSection />
+  </div>
+</template>
 
 <style></style>

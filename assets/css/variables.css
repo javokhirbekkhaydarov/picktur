@@ -1,3 +1,20 @@
 :root {
-    --white: #fff
+  --white: #fff;
+  --color-text-main: #1a1d3e;
+}
+
+.link_name {
+  display: flex;
+  align-items: center;
+  font-family: Roboto_Medium, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+  text-align: left;
+  gap: 4px;
+}
+.active_link_name {
+  background:  -webkit-linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

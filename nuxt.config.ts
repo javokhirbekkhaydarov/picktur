@@ -9,7 +9,19 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
   },
-  modules: ["@nuxtjs/i18n", "@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/i18n", '@nuxtjs/tailwindcss'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+  tailwindcss: {
+    cssPath: ['~/assets/css/tailwind.css'],
+    configPath: 'tailwind.config',
+    important: true,
+    viewer: true,
+  },
   css: ["~/assets/css/main.css"],
   i18n: {
     lazy: true,
@@ -30,8 +42,5 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: "ru",
-    vueI18n: {
-      fallbackLocale: "ru",
-    },
   },
 });
