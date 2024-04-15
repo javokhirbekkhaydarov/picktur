@@ -1,7 +1,7 @@
 <template>
   <div class="header bg-white flex justify-center">
     <div
-      class="container max-width-xxl p-6 flex justify-between align-middle items-center"
+      class="container max-width-xxl p-6 flex justify-around align-middle items-center"
     >
       <LogoComponent />
       <ul class="links flex justify-between gap-[50px]">
@@ -16,7 +16,7 @@
               draggable="false"
               alt=""
             />
-            Главная {{checkCurrentPath('/')}}
+            Главная
           </router-link>
         </li>
         <li>
@@ -35,7 +35,8 @@
       <CurrencyComponent />
       <div class="stroke_line"></div>
       <SwitchLang />
-      <div class="auth_button">
+
+      <div class="auth_button flex items-center w-[123px]">
         <img src="@/assets/icons/person.svg" draggable="false" />
         Вход
       </div>
@@ -44,7 +45,6 @@
 </template>
 
 <script setup lang="ts">
-
 const checkCurrentPath = (name: string) => {
   const route = useRoute();
   return route.fullPath === name;
