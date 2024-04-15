@@ -1,4 +1,4 @@
-<template>home page</template>
+<template><p>{{ $t('hello') }}</p></template>
 
 <script></script>
 

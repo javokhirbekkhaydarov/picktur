@@ -5,12 +5,33 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Picktur",
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-    }
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+    },
   },
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ],
-  css: ['~/assets/css/main.css']
-})
+  modules: ["@nuxtjs/i18n", "@nuxtjs/tailwindcss"],
+  css: ["~/assets/css/main.css"],
+  i18n: {
+    lazy: true,
+    langDir: "locales",
+    strategy: "prefix_except_default",
+    locales: [
+      {
+        code: "ru",
+        iso: "ru",
+        name: "Russian(RU)",
+        file: "ru.ts",
+      },
+      {
+        code: "md",
+        iso: "md",
+        name: "Moldovan(MD)",
+        file: "md.ts",
+      },
+    ],
+    defaultLocale: "ru",
+    vueI18n: {
+      fallbackLocale: "ru",
+    },
+  },
+});
