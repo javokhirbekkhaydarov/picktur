@@ -1,0 +1,31 @@
+.form_heading_item {
+  transition: all 0.2s linear !important;
+}
+.form_heading_item span {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25.2px;
+  text-align: left;
+  color: var(--color-text-secondary);
+}
+.active_heading_item span {
+  background: linear-gradient(89.15deg, #6a11cb 0%, #2575fc 99.86%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Roboto_Medium, sans-serif, sans-serif;
+  font-weight: 500;
+}
+.active_heading_item {
+  position: relative;
+}
+.active_heading_item:after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(89.15deg, #6a11cb 0%, #2575fc 99.86%);
+  transition: all 0.2s linear !important;
+}

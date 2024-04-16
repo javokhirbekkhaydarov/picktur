@@ -2,6 +2,7 @@
 @import "variables.css";
 @import "header.css";
 @import "hero.css";
+@import "form.css";
 * {
     margin: 0;
     padding: 0;
