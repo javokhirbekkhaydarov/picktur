@@ -1,7 +1,7 @@
 <template>
   <div class="header bg-white flex justify-center">
     <div
-      class="container max-width-xxl p-6 flex justify-around align-middle items-center"
+      class="container max-w-[1290px] p-6 flex justify-around align-middle items-center"
     >
       <LogoComponent />
       <ul class="links flex justify-between gap-[50px]">
