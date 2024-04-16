@@ -16,7 +16,7 @@
               draggable="false"
               alt=""
             />
-            Главная
+            Главная  {{$t('hello')}}
           </router-link>
         </li>
         <li>

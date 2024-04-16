@@ -48,7 +48,7 @@ const selectCurrency = (currency: string) => {
 };
 </script>
 
-<style scoped>
+<style>
 .switcher_heading {
   cursor: pointer;
 }

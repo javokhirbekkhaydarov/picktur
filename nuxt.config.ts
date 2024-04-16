@@ -31,13 +31,13 @@ export default defineNuxtConfig({
       {
         code: "ru",
         iso: "ru",
-        name: "Russian(RU)",
+        name: "Русский",
         file: "ru.ts",
       },
       {
         code: "md",
         iso: "md",
-        name: "Moldovan(MD)",
+        name: "Молдавский",
         file: "md.ts",
       },
     ],

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import {useI18n} from "#i18n";
-import {computed} from "vue";
 const { locales, locale, setLocale } = useI18n();
 
 const language = computed({

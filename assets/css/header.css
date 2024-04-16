@@ -37,6 +37,7 @@
   position: absolute;
   top: 30px;
   gap: 2px;
+  background: var(--white);
 }
 .switcher_heading {
   display: flex;
@@ -80,4 +81,11 @@
   color: var(--color-text-main);
   display: flex;
   align-items: center;
+}
+
+.stroke_line {
+  height: 100%;
+  width: 2px;
+  background: var(--Border-Border-color-border-primary);
+  border-radius: 1px;
 }
