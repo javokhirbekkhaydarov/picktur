@@ -30,6 +30,7 @@
         </div>
       </div>
     </transition>
+    <div class="overlay_bg" v-if="isDropdownOpen" @click="toggleDropdown"></div>
   </div>
 </template>
 
