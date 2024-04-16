@@ -5,7 +5,7 @@
       @click="toggleDropdown"
       :class="{ '': isDropdownOpen }"
     >
-      <img :src="`/assets/icons/${selectedLang.code}.svg`" alt="" />
+      <img :src="`/assets/icons/${locale}.svg`" alt="" />
       <img
         :class="{ 'rotate-180': isDropdownOpen }"
         src="@/assets/icons/down.svg"
@@ -24,7 +24,7 @@
           :key="item.code"
           @click="selectLanguage(item.code)"
           class="switcher_item flex"
-          :class="{ current_switcher: item.code === selectedLang.code }"
+          :class="{ current_switcher: item.code === locale }"
         >
           <img :src="`/assets/icons/${item.code}.svg`" alt="" />
           <span>{{ item.name }}</span>
@@ -36,16 +36,14 @@
 </template>
 
 <script setup lang="ts">
-const { locales, setLocale } = useI18n();
+const { locales, setLocale , locale } = useI18n();
 const isDropdownOpen = ref(false);
-const selectedLang = ref({ code: "ru" });
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
 };
 
 const selectLanguage = (code: string) => {
-  selectedLang.value = { code };
   setLocale(code);
   isDropdownOpen.value = false;
 };
