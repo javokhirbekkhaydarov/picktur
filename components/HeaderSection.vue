@@ -35,9 +35,8 @@
       <CurrencyComponent />
       <div class="stroke_line"></div>
       <SwitchLang />
-
       <div class="auth_button flex items-center w-[123px]">
-        <img src="@/assets/icons/person.svg" draggable="false" />
+        <img src="@/assets/icons/person.svg" draggable="false"  alt=""/>
         Вход
       </div>
     </div>
