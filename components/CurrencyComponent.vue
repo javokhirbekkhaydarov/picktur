@@ -5,7 +5,10 @@
       @click="toggleDropdown"
       :class="{ '': isDropdownOpen }"
     >
+      <span class="w-[40px] flex justify-start">
+
       {{ selectedCurrency.slice(2) }}
+      </span>
       <img
         :class="{ 'rotate-180': isDropdownOpen }"
         src="@/assets/icons/down.svg"
@@ -13,7 +16,7 @@
         class="down_up"
       />
     </div>
-<!--    <transition name="slide-fade">-->
+    <transition name="slide-fade">
       <div
         v-if="isDropdownOpen"
         class="switcher_body p-[10px] gap-[10px] flex flex-col"
@@ -29,7 +32,7 @@
           {{ currency }}
         </div>
       </div>
-<!--    </transition>-->
+    </transition>
     <div class="overlay_bg" v-if="isDropdownOpen" @click="toggleDropdown"></div>
   </div>
 </template>

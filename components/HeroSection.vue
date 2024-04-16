@@ -9,6 +9,7 @@
           Забронируй отель Albatros Aqua Blu и плати только за двоих
         </div>
         <div class="hero_description">2 детей отдыхают бесплатно</div>
+        <div class="hero_description">{{$t('hello')}}</div>
       </div>
       <HeroForm />
     </div>
