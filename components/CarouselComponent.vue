@@ -64,6 +64,8 @@ const modules = [Navigation, Scrollbar, Pagination, Autoplay];
 .main-img {
   width: 100%;
   object-fit: contain;
+  background: linear-gradient(89.96deg, rgba(26, 29, 62, 0.05) 0.03%, rgba(26, 29, 62, 0.084) 47.41%, rgba(8, 23, 52, 0.122) 99.97%);
+
 }
 .swiper-pagination-bullet {
   background: var(--white) !important;
