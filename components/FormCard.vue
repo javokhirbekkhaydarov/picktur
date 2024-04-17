@@ -1,11 +1,8 @@
 <template>
   <div class="form_card flex flex-col gap-[4px]">
     <div class="form_card_item" v-for="item in countries" :key="item.id">
-      <div class="form_card_item_heading">
-        <div
-          class="form_card_item_heading_name"
-          @click="toggleCardBody(item.id)"
-        >
+      <div class="form_card_item_heading" @click="toggleCardBody(item.id)">
+        <div class="form_card_item_heading_name">
           {{ item.name }}
         </div>
         <div class="down_form">
