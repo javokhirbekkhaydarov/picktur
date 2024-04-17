@@ -1,20 +1,21 @@
 <template>
   <div class="form_card flex flex-col gap-[4px]">
     <div class="form_card_item" v-for="item in countries" :key="item.id">
-      <div class="form_card_item_heading flex justify-between">
+      <div class="form_card_item_heading">
         <div
           class="form_card_item_heading_name"
           @click="selectCountry(item.name)"
         >
           {{ item.name }}
         </div>
-        <img
-          src="@/assets/icons/down.svg"
-          alt=""
-          class="down_up"
-          :class="{ 'rotate-180': openCards.includes(item.id) }"
-          @click="toggleCardBody(item.id)"
-        />
+        <div class="down_form" @click="toggleCardBody(item.id)">
+          <img
+            src="@/assets/icons/down.svg"
+            alt=""
+            class="down_up"
+            :class="{ 'rotate-180': openCards.includes(item.id) }"
+          />
+        </div>
       </div>
       <div class="form_card_item_body" v-show="openCards.includes(item.id)">
         <div
@@ -34,8 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, ref } from "vue";
-
 const props = defineProps({
   countries: {
     type: Array,
@@ -55,7 +54,7 @@ const selectCountry = (country: string) => {
 
 const toggleCardBody = (id: string) => {
   if (openCards.value.includes(id)) {
-    openCards.value = openCards.value.filter((cardId) => cardId !== id);
+    openCards.value = openCards.value.filter((cardId: any) => cardId !== id);
   } else {
     openCards.value.push(id);
   }

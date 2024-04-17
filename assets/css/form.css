@@ -113,6 +113,8 @@
 .form_card_item_heading {
   padding: 10px 8px;
   cursor: pointer;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 .form_card_item_body_item {
   padding: 10px 8px;
@@ -134,4 +136,11 @@
   line-height: 22.4px;
   text-align: left;
   color: var(--primary-bg-color);
+}
+
+.down_form {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
