@@ -38,12 +38,12 @@ const items = ref([
   {
     label: "Горящие туры",
     icon: "/assets/icons/form/fire.svg",
-    active_icon: "/assets/icons/form/fire.svg",
+    active_icon: "/assets/icons/form/fire_active.svg",
   },
   {
     label: "Авиабилеты (скоро)",
     icon: "/assets/icons/form/plane.svg",
-    active_icon: "/assets/icons/form/plane.svg",
+    active_icon: "/assets/icons/form/plane_active.svg",
   },
 ]);
 
