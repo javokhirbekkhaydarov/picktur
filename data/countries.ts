@@ -46,7 +46,7 @@ export default [
   },
   {
     name: "Кипр",
-    id: 4,
+    id: 5,
     cities: [
       {
         name: "Бухарест",
@@ -58,7 +58,7 @@ export default [
   },
   {
     name: "ОАЭ",
-    id: 5,
+    id: 6,
     cities: [
       {
         name: "Бухарест",
