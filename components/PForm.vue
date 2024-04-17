@@ -1,5 +1,6 @@
 <template>
   <form class="form_body flex justify-between">
+    <div class="overlay_bg" v-if="showFromCard" @click="handleInputFocus(false)"></div>
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="from">
         <img src="/assets/icons/form/location.svg" alt="" />
@@ -8,11 +9,21 @@
           type="text"
           class="form_input"
           placeholder="Откуда"
+          @focus="handleInputFocus(true)"
         />
       </div>
       <p v-show="errors.from" class="err_msg">
         {{ errors.from }}
       </p>
+      <transition name="slide-fade">
+
+      <FormCard
+        :countries="countries"
+        v-if="showFromCard"
+        @citySelected="citySelected"
+        @countrySelected="countrySelected"
+      />
+      </transition>
     </div>
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="to">
@@ -71,7 +82,7 @@
       </p>
     </div>
     <div
-      class="flex justify-center auth_button w-[190px] whitespace-nowrap text[16px] px-0"
+      class="flex justify-center auth_button w-[190px] h-[44px] whitespace-nowrap text[16px] px-0"
       @click="searchTicket"
     >
       <img
@@ -86,6 +97,8 @@
 </template>
 
 <script setup lang="ts">
+import countries from "~/data/countries";
+
 interface FieldNames {
   from: string;
   to: string;
@@ -113,7 +126,6 @@ const errors = ref<FieldNames>({
   users: "",
 });
 
-
 const fieldNames: FieldNames = {
   from: "Откуда",
   to: "Куда",
@@ -121,7 +133,7 @@ const fieldNames: FieldNames = {
   day: "Кол-во ночей",
   users: "Туристы",
 };
-
+const showFromCard = ref(false);
 const validateField = (field: keyof FieldNames) => {
   const fieldValue = form.value[field];
 
@@ -142,6 +154,19 @@ const searchTicket = () => {
   if (!hasErrors) {
     console.log("success");
   }
+};
+
+const handleInputFocus = (focused: boolean) => {
+  showFromCard.value = focused;
+};
+
+const citySelected = (city: string) => {
+  form.value.from = city;
+  showFromCard.value = false;
+};
+const countrySelected = (country: string) => {
+  form.value.from = country;
+  showFromCard.value = false;
 };
 </script>
 <style scoped></style>
