@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
   },
-  modules: ["@nuxtjs/i18n", '@nuxtjs/tailwindcss'],
+  modules: ["@nuxtjs/i18n", '@nuxtjs/tailwindcss','@samk-dev/nuxt-vcalendar'],
   postcss: {
     plugins: {
       tailwindcss: {},

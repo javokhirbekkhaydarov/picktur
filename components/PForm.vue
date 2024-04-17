@@ -55,12 +55,38 @@
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="date">
         <img src="/assets/icons/form/calendar.svg" alt="" />
-        <input
-          v-model="form.date"
-          type="text"
-          class="form_input"
-          placeholder="Период отбытия"
-        />
+<!--        <input-->
+<!--          v-model="form.date"-->
+<!--          type="text"-->
+<!--          class="form_input"-->
+<!--          placeholder="Период отбытия"-->
+<!--        />-->
+
+        <client-only>
+<!--          <h2>Calendar</h2>-->
+<!--          <VCalendar v-model="form.date" />-->
+<!--          <h2>Date Picker</h2>-->
+<!--          <VDatePicker v-model="form.date" :attributes="attrs" />-->
+<!--          <VDatePicker v-model="form.date" :popover="false">-->
+<!--            <template #default="{ inputValue, inputEvents }">-->
+<!--              <BaseInput :value="inputValue" v-on="inputEvents" />-->
+<!--            </template>-->
+<!--          </VDatePicker>-->
+          <VDatePicker v-model="form.date" :popover="false">
+            <template #default="{ togglePopover, inputValue, inputEvents }">
+              <div
+                  class="flex  overflow-hidden"
+              >
+                <input
+                    @click.prevent="() => togglePopover()"
+                    :value="inputValue"
+                    v-on="inputEvents"
+                    class="flex-grow px-2 py-1 bg-white outline-none form_input"
+                />
+              </div>
+            </template>
+          </VDatePicker>
+        </client-only>
       </div>
       <p v-show="errors.date" class="err_msg">
         {{ errors.date }}
@@ -127,7 +153,7 @@ const users = ref();
 const form = ref<FieldNames>({
   from: "",
   to: "",
-  date: "",
+  date: new Date(),
   day: "",
   users: "",
 });
@@ -148,6 +174,17 @@ const fieldNames: FieldNames = {
 };
 const showFromCard = ref(false);
 const showFromTo = ref(false);
+const popover = ref(true);
+const attrs = ref([
+  {
+    key: 'today',
+    highlight: {
+      color: 'green',
+      fillMode: 'solid'
+    },
+    dates: new Date()
+  }
+])
 const validateField = (field: keyof FieldNames) => {
   const fieldValue = form.value[field];
 
