@@ -1,6 +1,6 @@
 # Picktur project
-# demo
-https://picktur.vercel.app/
+# demo https://picktur.vercel.app/
+
 
 ## technologies nuxt3 i18n , carousel , ts
 
