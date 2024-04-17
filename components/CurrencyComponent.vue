@@ -7,7 +7,7 @@
     >
       <span class="w-[40px] flex justify-start">
 
-      {{ selectedCurrency.slice(2) }}
+      {{ selectedCurrency?.slice(2) }}
       </span>
       <img
         :class="{ 'rotate-180': isDropdownOpen }"

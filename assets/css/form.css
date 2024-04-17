@@ -94,7 +94,6 @@
   background: var(--white);
   max-height: 200px;
   overflow-y: scroll;
-
 }
 .form_card::-webkit-scrollbar {
   width: 8px;
@@ -110,11 +109,27 @@
 .form_card::-webkit-scrollbar-track {
   background-color: var(--neytrall);
 }
+
 .form_card_item_heading {
   padding: 10px 8px;
   cursor: pointer;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  border-radius: 8px;
+  transition: all 0.2s linear;
+  background: none;
+}
+.form_card_item {
+  transition: all 0.2s linear;
+}
+.form_card_item_heading:hover {
+  transition: all 0.2s linear;
+
+  background: linear-gradient(
+    180deg,
+    rgba(106, 17, 203, 0.25) 0%,
+    rgba(37, 117, 252, 0.25) 100%
+  );
 }
 .form_card_item_body_item {
   padding: 10px 8px;

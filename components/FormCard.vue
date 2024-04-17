@@ -4,11 +4,11 @@
       <div class="form_card_item_heading">
         <div
           class="form_card_item_heading_name"
-          @click="selectCountry(item.name)"
+          @click="toggleCardBody(item.id)"
         >
           {{ item.name }}
         </div>
-        <div class="down_form" @click="toggleCardBody(item.id)">
+        <div class="down_form">
           <img
             src="@/assets/icons/down.svg"
             alt=""
@@ -17,19 +17,21 @@
           />
         </div>
       </div>
-      <div class="form_card_item_body" v-show="openCards.includes(item.id)">
-        <div
-          class="form_card_item_body_item flex justify-start gap-[12px]"
-          v-for="element in item.cities"
-          :key="element.id"
-          @click="selectCity(element.name)"
-        >
-          <input type="checkbox" />
-          <div class="form_card_item_body_item_name">
-            {{ element.name }}
+      <Transition name="slide-fade">
+        <div class="form_card_item_body" v-show="openCards.includes(item.id)">
+          <div
+            class="form_card_item_body_item flex justify-start gap-[12px]"
+            v-for="element in item.cities"
+            :key="element.id"
+            @click="selectCity(element.name)"
+          >
+            <input type="checkbox" />
+            <div class="form_card_item_body_item_name">
+              {{ element.name }}
+            </div>
           </div>
         </div>
-      </div>
+      </Transition>
     </div>
   </div>
 </template>
