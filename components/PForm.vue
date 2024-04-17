@@ -1,6 +1,11 @@
 <template>
   <form class="form_body flex justify-between">
-    <div class="overlay_bg" v-if="showFromCard" @click="handleInputFocus(false)"></div>
+    <div
+      class="overlay_bg"
+      v-if="showFromCard"
+      @click="handleInputFocus(false)"
+    ></div>
+    <div class="overlay_bg" v-if="showFromTo" @click="InputShowTo(false)"></div>
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="from">
         <img src="/assets/icons/form/location.svg" alt="" />
@@ -16,13 +21,12 @@
         {{ errors.from }}
       </p>
       <transition name="slide-fade">
-
-      <FormCard
-        :countries="countries"
-        v-if="showFromCard"
-        @citySelected="citySelected"
-        @countrySelected="countrySelected"
-      />
+        <FormCard
+          :countries="countries"
+          v-if="showFromCard"
+          @citySelected="citySelected"
+          @countrySelected="countrySelected"
+        />
       </transition>
     </div>
     <div class="flex flex-col relative">
@@ -33,11 +37,20 @@
           type="text"
           class="form_input"
           placeholder="Куда"
+          @focus="InputShowTo(true)"
         />
       </div>
       <p v-show="errors.to" class="err_msg">
         {{ errors.to }}
       </p>
+      <transition name="slide-fade">
+        <FormCard
+          :countries="countries"
+          v-if="showFromTo"
+          @citySelected="cityToSelected"
+          @countrySelected="countrySelected"
+        />
+      </transition>
     </div>
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="date">
@@ -134,6 +147,7 @@ const fieldNames: FieldNames = {
   users: "Туристы",
 };
 const showFromCard = ref(false);
+const showFromTo = ref(false);
 const validateField = (field: keyof FieldNames) => {
   const fieldValue = form.value[field];
 
@@ -159,10 +173,17 @@ const searchTicket = () => {
 const handleInputFocus = (focused: boolean) => {
   showFromCard.value = focused;
 };
+const InputShowTo = (focused: boolean) => {
+  showFromTo.value = focused;
+};
 
 const citySelected = (city: string) => {
   form.value.from = city;
   showFromCard.value = false;
+};
+const cityToSelected = (city: string) => {
+  form.value.to = city;
+  showFromTo.value = false;
 };
 const countrySelected = (country: string) => {
   form.value.from = country;
