@@ -72,7 +72,7 @@
 <!--              <BaseInput :value="inputValue" v-on="inputEvents" />-->
 <!--            </template>-->
 <!--          </VDatePicker>-->
-          <VDatePicker v-model.range="form.date" :popover="false"  :columns="columns" color="indigo" >
+          <VDatePicker v-model.range="form.date" :popover="false"  :columns="columns" color="indigo" locale="ru">
             <template #default="{ togglePopover, inputValue, inputEvents }">
               <div
                   class="flex  overflow-hidden"
