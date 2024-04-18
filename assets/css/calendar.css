@@ -1,0 +1,57 @@
+:root {
+    --vc-accent-50: #eef2ff;
+    --vc-accent-100: #fff !important;
+    --vc-accent-200: transparent !important;
+    --vc-accent-300: #fff !important;
+    --vc-accent-400: #818cf8;
+    --vc-accent-500: #2575FC !important;
+    --vc-accent-600: #2575FC !important;
+    --vc-accent-700: #2575FC !important;
+    --vc-accent-800: #2575FC !important;
+    --vc-accent-900: #2575FC !important;
+    --disable-date: #F13D4133 !important;
+    --bg-gradient: linear-gradient(89.15deg, #6A11CB 0%, #2575FC 99.86%);
+}
+
+
+
+.vc-highlight.vc-highlight-bg-solid  {
+}
+.vc-focus {
+    border: 0 !important;
+
+    font-family: Roboto , sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    text-align: center;
+
+}
+.vc-focusable {
+    border: 0 !important;
+}
+.vc-highlight-content-outline {
+    background: linear-gradient(89.15deg, #6A11CB 0%, #2575FC 99.86%)!important;
+    color: var(--white) !important;
+}
+.vc-highlights {
+    background: linear-gradient(89.15deg, #6A11CB 0%, #2575FC 99.86%)!important;
+    color: var(--white) !important;
+}.vc-day-layer {
+     background: transparent !important;
+     color: var(--white) !important;
+
+ }
+.vc-highlight-content-light  {
+    color: var(--white) !important;
+    background: linear-gradient(180deg, rgba(106, 17, 203, 0.5) 0%, rgba(37, 117, 252, 0.5) 100%) !important;
+    font-weight: 400 !important;
+}
+.vc-day-content.vc-focusable.vc-focus.vc-attr.vc-attr.vc-highlight-content-solid.vc-indigo {
+    background: var(--bg-gradient);
+
+}
+.vc-disabled {
+    background: var(--disable-date) !important;
+    color: var(--primary-red) !important;
+}

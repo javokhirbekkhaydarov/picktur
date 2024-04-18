@@ -72,14 +72,14 @@
 <!--              <BaseInput :value="inputValue" v-on="inputEvents" />-->
 <!--            </template>-->
 <!--          </VDatePicker>-->
-          <VDatePicker v-model="form.date" :popover="false">
+          <VDatePicker v-model.range="form.date" :popover="false"  :columns="columns" color="indigo" >
             <template #default="{ togglePopover, inputValue, inputEvents }">
               <div
                   class="flex  overflow-hidden"
               >
                 <input
                     @click.prevent="() => togglePopover()"
-                    :value="inputValue"
+                    :value="`${inputValue.start} - ${inputValue.end}`"
                     v-on="inputEvents"
                     class="flex-grow px-2 py-1 bg-white outline-none form_input"
                 />
@@ -136,6 +136,7 @@
 </template>
 
 <script setup lang="ts">
+import { useScreens } from 'vue-screen-utils';
 import countries from "~/data/countries";
 
 interface FieldNames {
@@ -153,7 +154,10 @@ const users = ref();
 const form = ref<FieldNames>({
   from: "",
   to: "",
-  date: new Date(),
+  date: {
+    start: new Date(),
+    end: new Date(),
+  },
   day: "",
   users: "",
 });
@@ -174,17 +178,15 @@ const fieldNames: FieldNames = {
 };
 const showFromCard = ref(false);
 const showFromTo = ref(false);
-const popover = ref(true);
-const attrs = ref([
+const disabledDates = ref([
   {
-    key: 'today',
-    highlight: {
-      color: 'green',
-      fillMode: 'solid'
+    repeat: {
+      weekdays: [7],
     },
-    dates: new Date()
-  }
-])
+  },
+]);
+const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' });
+const columns = mapCurrent({ lg: 2 }, 1);
 const validateField = (field: keyof FieldNames) => {
   const fieldValue = form.value[field];
 
