@@ -1,7 +1,7 @@
 :root {
     --vc-accent-50: #eef2ff;
     --vc-accent-100: #fff !important;
-    --vc-accent-200: transparent !important;
+    --vc-accent-200: none !important;
     --vc-accent-300: #fff !important;
     --vc-accent-400: #818cf8;
     --vc-accent-500: #2575FC !important;
@@ -11,9 +11,12 @@
     --vc-accent-900: #2575FC !important;
     --disable-date: #F13D4133 !important;
     --bg-gradient: linear-gradient(89.15deg, #6A11CB 0%, #2575FC 99.86%);
+    --vc-highlight-light-bg: none !important;
 }
 
-
+.vc-highlight-bg-light {
+    background: transparent !important;
+}
 
 .vc-highlight.vc-highlight-bg-solid  {
 }
@@ -54,4 +57,18 @@
 .vc-disabled {
     background: var(--disable-date) !important;
     color: var(--primary-red) !important;
+}
+.vc-weekday {
+    font-family: Roboto , sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    text-align: center;
+    color: var(--color-text-secondary) !important;
+}
+.vc-weekdays {
+    border-bottom: 1px solid var(--Border-Border-color-border-primary);
+}
+.vc-week:nth-child(2) {
+    margin-top: 4px;
 }
