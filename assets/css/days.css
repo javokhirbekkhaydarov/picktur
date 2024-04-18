@@ -1,0 +1,51 @@
+.days_box {
+  position: absolute;
+  padding: 12px 48px;
+  gap: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--Border-Border-color-border-primary);
+  background: var(--white);
+  top: 130%;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.days_box_heading {
+  display: flex;
+  justify-content: space-between;
+}
+.days_box_heading_item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.days_start {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+.days_count {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
+  color: var(--color-text-main);
+}
+.days_box_body {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.selected_days {
+  color: var(--color-text-main) !important;
+}

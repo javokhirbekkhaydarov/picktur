@@ -1,5 +1,5 @@
 <template>
-  <form class="form_body flex justify-between">
+  <form class="form_body flex justify-between relative">
     <div
       class="overlay_bg"
       v-if="showFromCard"
@@ -55,33 +55,22 @@
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="date">
         <img src="/assets/icons/form/calendar.svg" alt="" />
-<!--        <input-->
-<!--          v-model="form.date"-->
-<!--          type="text"-->
-<!--          class="form_input"-->
-<!--          placeholder="Период отбытия"-->
-<!--        />-->
-
         <client-only>
-<!--          <h2>Calendar</h2>-->
-<!--          <VCalendar v-model="form.date" />-->
-<!--          <h2>Date Picker</h2>-->
-<!--          <VDatePicker v-model="form.date" :attributes="attrs" />-->
-<!--          <VDatePicker v-model="form.date" :popover="false">-->
-<!--            <template #default="{ inputValue, inputEvents }">-->
-<!--              <BaseInput :value="inputValue" v-on="inputEvents" />-->
-<!--            </template>-->
-<!--          </VDatePicker>-->
-          <VDatePicker v-model.range="form.date" :popover="false"  :columns="columns" color="indigo" locale="ru">
+          <VDatePicker
+            v-model.range="form.date"
+            :popover="false"
+            :columns="columns"
+            color="indigo"
+            locale="ru"
+            mode="date"
+          >
             <template #default="{ togglePopover, inputValue, inputEvents }">
-              <div
-                  class="flex  overflow-hidden"
-              >
+              <div class="flex overflow-hidden">
                 <input
-                    @click.prevent="() => togglePopover()"
-                    :value="`${inputValue.start} - ${inputValue.end}`"
-                    v-on="inputEvents"
-                    class="flex-grow px-2 py-1 bg-white outline-none form_input"
+                  @click.prevent="() => togglePopover()"
+                  :value="`${inputValue.start} - ${inputValue.end}`"
+                  v-on="inputEvents"
+                  class="flex-grow px-2 py-1 bg-white outline-none form_input"
                 />
               </div>
             </template>
@@ -92,7 +81,7 @@
         {{ errors.date }}
       </p>
     </div>
-    <div class="flex flex-col relative">
+    <div class="flex flex-col">
       <div class="form_input_parent" ref="day">
         <img src="/assets/icons/form/moon.png" alt="" />
         <input
@@ -105,6 +94,9 @@
       <p v-show="errors.day" class="err_msg">
         {{ errors.day }}
       </p>
+      <Transition name="slide-fade">
+        <SelectDays />
+      </Transition>
     </div>
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="users">
@@ -136,7 +128,7 @@
 </template>
 
 <script setup lang="ts">
-import { useScreens } from 'vue-screen-utils';
+import { useScreens } from "vue-screen-utils";
 import countries from "~/data/countries";
 
 interface FieldNames {
@@ -185,7 +177,12 @@ const disabledDates = ref([
     },
   },
 ]);
-const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' });
+const { mapCurrent } = useScreens({
+  xs: "0px",
+  sm: "640px",
+  md: "768px",
+  lg: "1024px",
+});
 const columns = mapCurrent({ lg: 2 }, 1);
 const validateField = (field: keyof FieldNames) => {
   const fieldValue = form.value[field];

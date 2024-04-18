@@ -4,6 +4,7 @@
 @import "hero.css";
 @import "form.css";
 @import "calendar.css";
+@import "days.css";
 * {
     margin: 0;
     padding: 0;
