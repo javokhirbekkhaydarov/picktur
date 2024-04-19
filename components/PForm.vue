@@ -2,10 +2,9 @@
   <form class="form_body flex justify-between relative">
     <div
       class="overlay_bg"
-      v-if="showFromCard"
-      @click="handleInputFocus(false)"
+      v-if="focusedInput !== null"
+      @click="handleOverlayClick"
     ></div>
-    <div class="overlay_bg" v-if="showFromTo" @click="InputShowTo(false)"></div>
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="from">
         <img src="/assets/icons/form/location.svg" alt="" />
@@ -14,7 +13,7 @@
           type="text"
           class="form_input"
           placeholder="Откуда"
-          @focus="handleInputFocus(true)"
+          @focus="handleInputFocus('from')"
         />
       </div>
       <p v-show="errors.from" class="err_msg">
@@ -23,7 +22,7 @@
       <transition name="slide-fade">
         <FormCard
           :countries="countries"
-          v-if="showFromCard"
+          v-if="focusedInput === 'from'"
           @citySelected="citySelected"
           @countrySelected="countrySelected"
         />
@@ -37,7 +36,7 @@
           type="text"
           class="form_input"
           placeholder="Куда"
-          @focus="InputShowTo(true)"
+          @focus="handleInputFocus('to')"
         />
       </div>
       <p v-show="errors.to" class="err_msg">
@@ -46,7 +45,7 @@
       <transition name="slide-fade">
         <FormCard
           :countries="countries"
-          v-if="showFromTo"
+          v-if="focusedInput === 'to'"
           @citySelected="cityToSelected"
           @countrySelected="countrySelected"
         />
@@ -89,13 +88,18 @@
           type="text"
           class="form_input"
           placeholder="Кол-во ночей"
+          @focus="handleInputFocus('day')"
         />
       </div>
       <p v-show="errors.day" class="err_msg">
         {{ errors.day }}
       </p>
       <Transition name="slide-fade">
-        <SelectDays :day="form.day" @updateDay="updateDay" />
+        <SelectDays
+          :day="form.day"
+          @updateDay="updateDay"
+          v-if="focusedInput === 'day'"
+        />
       </Transition>
     </div>
     <div class="flex flex-col relative">
@@ -170,13 +174,7 @@ const fieldNames: FieldNames = {
 };
 const showFromCard = ref(false);
 const showFromTo = ref(false);
-const disabledDates = ref([
-  {
-    repeat: {
-      weekdays: [7],
-    },
-  },
-]);
+
 const { mapCurrent } = useScreens({
   xs: "0px",
   sm: "640px",
@@ -209,24 +207,28 @@ const searchTicket = () => {
   }
 };
 
-const handleInputFocus = (focused: boolean) => {
-  showFromCard.value = focused;
+const focusedInput = ref<string | null>(null);
+
+const handleInputFocus = (inputName: string) => {
+  focusedInput.value = inputName;
 };
-const InputShowTo = (focused: boolean) => {
-  showFromTo.value = focused;
+
+const handleOverlayClick = () => {
+  focusedInput.value = null;
 };
 
 const citySelected = (city: string) => {
   form.value.from = city;
-  showFromCard.value = false;
+  focusedInput.value = null;
 };
 const cityToSelected = (city: string) => {
   form.value.to = city;
-  showFromTo.value = false;
+  focusedInput.value = null;
 };
+
 const countrySelected = (country: string) => {
   form.value.from = country;
-  showFromCard.value = false;
+  focusedInput.value = null;
 };
 </script>
 <style scoped></style>
