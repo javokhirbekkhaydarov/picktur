@@ -49,3 +49,7 @@
 .selected_days {
   color: var(--color-text-main) !important;
 }
+
+.days_box_heading_item img {
+  cursor: pointer;
+}

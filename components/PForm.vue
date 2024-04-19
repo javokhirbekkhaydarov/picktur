@@ -95,7 +95,7 @@
         {{ errors.day }}
       </p>
       <Transition name="slide-fade">
-        <SelectDays />
+        <SelectDays :day="form.day" @updateDay="updateDay" />
       </Transition>
     </div>
     <div class="flex flex-col relative">
@@ -150,7 +150,7 @@ const form = ref<FieldNames>({
     start: new Date(),
     end: new Date(),
   },
-  day: "",
+  day: null,
   users: "",
 });
 const errors = ref<FieldNames>({
@@ -194,6 +194,9 @@ const validateField = (field: keyof FieldNames) => {
     errors.value[field] = "";
     eval(`${field}.value`).classList.remove("err_form");
   }
+};
+const updateDay = (value: string) => {
+  form.value.day = value + " - дни";
 };
 
 const searchTicket = () => {
