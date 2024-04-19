@@ -26,20 +26,21 @@
 </template>
 
 <script setup lang="ts">
+
 const from = ref(5);
 const to = ref(7);
 
 const emit = defineEmits();
 defineProps({
-  day: {},
-});
+  day:{}
+})
 const increment = (type: string) => {
   if (type === "from") {
     from.value++;
   } else if (type === "to") {
     to.value++;
   }
-  emit("updateDay", `${from.value}-${to.value}`);
+  emit('updateDay', `${from.value}-${to.value}`);
 };
 
 const decrement = (type: string) => {
@@ -48,7 +49,7 @@ const decrement = (type: string) => {
   } else if (type === "to" && to.value > 1) {
     to.value--;
   }
-  emit("updateDay", `${from.value}-${to.value}`);
+  emit('updateDay', `${from.value}-${to.value}`);
 };
 </script>
 

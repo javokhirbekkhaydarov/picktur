@@ -54,6 +54,7 @@
     <div class="flex flex-col relative">
       <div class="form_input_parent" ref="date">
         <img src="/assets/icons/form/calendar.svg" alt="" />
+
         <client-only>
           <VDatePicker
             v-model.range="form.date"
@@ -97,6 +98,7 @@
       <Transition name="slide-fade">
         <SelectDays
           :day="form.day"
+          :dates="form.date"
           @updateDay="updateDay"
           v-if="focusedInput === 'day'"
         />
@@ -110,11 +112,18 @@
           type="text"
           class="form_input"
           placeholder="Туристы"
+          @focus="handleInputFocus('users')"
         />
       </div>
       <p v-show="errors.users" class="err_msg">
         {{ errors.users }}
       </p>
+      <Transition name="slide-fade">
+        <TouristsCard
+          v-if="focusedInput === 'users'"
+          @updateUser="updateUser"
+        />
+      </Transition>
     </div>
     <div
       class="flex justify-center auth_button w-[190px] h-[44px] whitespace-nowrap text[16px] px-0"
@@ -172,8 +181,6 @@ const fieldNames: FieldNames = {
   day: "Кол-во ночей",
   users: "Туристы",
 };
-const showFromCard = ref(false);
-const showFromTo = ref(false);
 
 const { mapCurrent } = useScreens({
   xs: "0px",
@@ -196,7 +203,9 @@ const validateField = (field: keyof FieldNames) => {
 const updateDay = (value: string) => {
   form.value.day = value + " - дни";
 };
-
+const updateUser = (value: string) => {
+  form.value.users = value;
+};
 const searchTicket = () => {
   const fields: (keyof FieldNames)[] = ["from", "to", "date", "day", "users"];
   fields.forEach((field) => validateField(field));

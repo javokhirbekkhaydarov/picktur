@@ -5,8 +5,12 @@
 @import "form.css";
 @import "calendar.css";
 @import "days.css";
+@import "tour.css";
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 0px;
 }

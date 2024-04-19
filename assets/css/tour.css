@@ -1,0 +1,44 @@
+.users_name {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
+  color: var(--color-text-main);
+}
+
+.add_child {
+  border-radius: 8px;
+  border: 1px solid var(--Border-Border-color-border-primary);
+  padding: 10px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.ages_card {
+  height: 200px;
+  overflow-y: scroll;
+}
+.ages_card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ages_card::-webkit-scrollbar-thumb {
+  background-color: var(--neytrall300);
+  padding: 2px;
+  border-radius: 6px;
+  width: 90%;
+}
+
+.ages_card::-webkit-scrollbar-track {
+  background-color: var(--neytrall);
+}
+
+.ages_card_heading:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(106, 17, 203, 0.5) 0%,
+    rgba(37, 117, 252, 0.5) 100%
+  ) !important;
+  color: var(--white) !important;
+}
